@@ -43,6 +43,5 @@
     ]
   },
   "devDependencies": {
-    "react-chartjs-3": "^2.7.7"
   }
 }
