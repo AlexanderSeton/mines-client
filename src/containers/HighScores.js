@@ -9,7 +9,6 @@ import "../components/static/nav-link.css";
 import { NavLink } from 'react-router-dom'
 
 
-
 const HighScores = () => {  
 
     const [highScores, setHighScores] = useState([]);
@@ -23,14 +22,24 @@ const HighScores = () => {
         setHighScoresLength(highScores.length);
     }, [highScores])
 
-    const getHighScores = async function() {
-        await getScores()
-        .then(response => response.sort(function(a, b) {
-            return b.score - a.score;
-        }))
-        .then(data => setHighScores(data))
-    }
+    // const getHighScores = async function() {
+    //     await getScores()
+    //     .then(response => response.sort(function(a, b) {
+    //         return b.score - a.score;
+    //     }))
+    //     .then(data => setHighScores(data))
+    // }
 
+    const getHighScores = async function() {
+        const response = await getScores();
+        if (response !== null) {
+            const sortedData = await response.sort((a, b) => {
+                return b.score - a.score;
+            });
+            console.log("sortedData:", sortedData);
+            setHighScores(sortedData);
+        }
+    }
 
     const highScore_nodes = highScores.map((score, index) => {
         return (
