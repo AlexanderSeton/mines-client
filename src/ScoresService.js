@@ -4,6 +4,7 @@ export const getScores = () => {
     return(
         fetch(baseURL)
         .then(result => result.json())
+        .then(data => result.results)
     )
 }
 
