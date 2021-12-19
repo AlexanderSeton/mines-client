@@ -1,9 +1,9 @@
-const baseURL = "http://localhost:5000/api/scores"
+const baseURL = "https://mines-game-server.herokuapp.com/api/scores"
 
 export const getScores = () => {
     return(
         fetch(baseURL)
-        .then(res => res.json())
+        .then(result => result.json())
     )
 }
 
